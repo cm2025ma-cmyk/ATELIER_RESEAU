@@ -40,7 +40,7 @@ host (`br_netfilter`). En politique `FORWARD DROP` par défaut, cela bloque la
 traversée NAT entre nos deux bridges. On désactive ce hook pour le lab&nbsp;:
 
 ```bash
-sudo ./host-setup.sh
+sudo ./lab/host-setup.sh
 ```
 
 > Modification **non persistante** : à relancer après un redémarrage de
