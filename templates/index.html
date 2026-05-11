@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Accueil — Atelier Réseau M2{% endblock %}
+{% block content %}
+<h1>Atelier Réseau <span class="sub">Master 2 — fondamentaux pratiques</span></h1>
+
+<p>Cette application de référence accompagne l'atelier&nbsp;: elle propose des fiches structurées
+sur trois mécanismes essentiels du réseau et un tableau de bord QoS observé en direct.
+Toutes les pages exposent leur contenu en JSON via <code>?format=json</code> pour les exercices
+en ligne de commande.</p>
+
+<div class="cards-grid">
+  <a class="card" href="/osi">
+    <div class="card-tag tag-l3">L1 → L7</div>
+    <h2>OSI</h2>
+    <p>Le modèle 7 couches, avec un aperçu en direct de la requête HTTP en cours.</p>
+  </a>
+  <a class="card" href="/dhcp">
+    <div class="card-tag tag-dhcp">UDP 67/68</div>
+    <h2>DHCP</h2>
+    <p>L'échange DORA pas-à-pas, options courantes, et points de vigilance (rogue DHCP).</p>
+  </a>
+  <a class="card" href="/nat">
+    <div class="card-tag tag-nat">PAT</div>
+    <h2>NAT / PAT</h2>
+    <p>Traduction avant/après, exemple de table conntrack, limites du NAT.</p>
+  </a>
+  <a class="card" href="/metrics">
+    <div class="card-tag tag-qos">QoS · live</div>
+    <h2>Métriques</h2>
+    <p>Latence p50/p90/p95/p99, débit, taux d'erreur, jitter, token-bucket.</p>
+  </a>
+</div>
+
+<div class="callout">
+  <strong>Lab Docker</strong> — la partie pratique (captures tcpdump, table conntrack en direct,
+  manipulation d'<code>iptables</code>) se fait dans le répertoire <code>lab/</code> du dépôt.
+  Voir le <em>README</em> du projet pour les séquences.
+</div>
+{% endblock %}
