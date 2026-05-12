@@ -23,7 +23,7 @@ Côté `client`, déclenchez une nouvelle demande de bail&nbsp;:
 docker exec lab_client bash -c "dhclient -r eth0 2>/dev/null; dhclient -v eth0"
 ```
 
-Observez les **4 paquets** DORA dans la capture, puis arrêtez tcpdump.
+Observez les **4 paquets** DORA dans la capture, puis arrêtez tcpdump (Ctrl+c).
 
 Affichez aussi les journaux applicatifs du serveur&nbsp;:
 

@@ -152,7 +152,7 @@ docker compose ps                          # état des services
 docker logs -f lab_dhcp_server             # journal DHCP en direct
 docker logs -f lab_nat_router              # règles iptables au démarrage
 docker exec lab_nat_router conntrack -L    # table de traduction NAT
-docker exec lab_internet tail -f /var/log/nginx/access.log
+docker logs -f lab_internet                # journal nginx (= stdout, le fichier /var/log/nginx/access.log est un symlink vers /dev/stdout)
 ```
 
 Si le NAT ne fonctionne pas (`curl` timeout), relancez **`sudo ./lab/host-setup.sh`** — voir [`lab/README.md`](lab/README.md) pour l'explication détaillée du `br_netfilter`.

@@ -34,8 +34,12 @@ Et regardez ce que voit le serveur&nbsp;:
 
 ```bash
 docker exec lab_client curl -s http://172.20.0.10/whoami
-docker exec lab_internet tail -20 /var/log/nginx/access.log
+docker logs --tail 20 lab_internet
 ```
+
+> ℹ️ Dans l'image nginx officielle, `/var/log/nginx/access.log` est un
+> **symlink vers `/dev/stdout`** — la lecture passe donc par `docker logs`,
+> pas par `tail` sur le fichier.
 
 ### À rendre
 
