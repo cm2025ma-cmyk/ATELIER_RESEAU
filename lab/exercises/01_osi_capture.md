@@ -20,27 +20,62 @@ docker exec lab_client curl -s http://172.20.0.10/whoami
 
 ## Manipulation
 
-Dans un terminal, lancez la capture côté client&nbsp;:
+**Étape 1 — supprimez une éventuelle capture précédente** (sinon échec en
+*Permission denied* car tcpdump abandonne ses privilèges vers l'utilisateur
+`tcpdump` après ouverture du fichier) :
 
 ```bash
-docker exec lab_client tcpdump -i eth0 -w /tmp/http.pcap -nn host 172.20.0.10
+docker exec lab_client rm -f /tmp/http.pcap
 ```
 
-Dans un second terminal, déclenchez du trafic&nbsp;:
+**Étape 2 — lancez la capture côté client.** Les flags importants&nbsp;:
+`-U` (écriture non bufferisée, indispensable si la capture est interrompue),
+`-c 30` (s'arrête automatiquement après 30 paquets, ≈ 2 à 3 requêtes HTTP) :
+
+```bash
+docker exec lab_client tcpdump -i eth0 -U -w /tmp/http.pcap -nn -c 30 host 172.20.0.10
+```
+
+> ⚠️ Cette commande **bloque** le terminal tant que les 30 paquets ne sont
+> pas capturés. Ouvrez un **second terminal** pour l'étape 3.
+
+**Étape 3 — dans un second terminal, déclenchez du trafic** *pendant* que
+tcpdump tourne&nbsp;:
 
 ```bash
 docker exec lab_client curl -v http://172.20.0.10/
 docker exec lab_client curl -v http://172.20.0.10/whoami
+docker exec lab_client curl -s http://172.20.0.10/        # complément pour atteindre 30 paquets
 ```
 
-Arrêtez la capture (Ctrl+C), puis analysez-la&nbsp;:
+tcpdump s'arrête seul dès le 30e paquet et affiche un résumé du type
+`30 packets captured / 0 packets dropped by kernel`.
+
+**Étape 4 — vérifiez que la capture est exploitable** :
 
 ```bash
-docker exec lab_client tshark -r /tmp/http.pcap -V | less
+docker exec lab_client capinfos /tmp/http.pcap
 ```
 
-> `-V` produit la décomposition complète couche par couche (Frame → Ethernet
-> → IP → TCP → HTTP).
+`Number of packets` doit être > 0. Si la capture est vide, voir la section
+*Pièges fréquents* en bas de cet énoncé.
+
+**Étape 5 — analysez la capture**. Trois vues utiles&nbsp;:
+
+```bash
+# Vue compacte : une ligne par paquet (utile pour repérer les n° de frames)
+docker exec lab_client tshark -r /tmp/http.pcap
+
+# Vue détaillée d'un paquet précis (ex. la requête GET = frame n°4)
+docker exec lab_client tshark -r /tmp/http.pcap -V -Y 'frame.number == 4'
+
+# Vue détaillée complète (pager : utilisez 'q' pour quitter)
+docker exec -it lab_client sh -c "tshark -r /tmp/http.pcap -V | less"
+```
+
+> `-V` produit la décomposition complète couche par couche
+> (Frame → Ethernet → IP → TCP → HTTP). Le filtre `-Y` cible un paquet
+> par son numéro pour éviter d'avoir à scroller dans toute la trace.
 
 ## À rendre dans le README de votre fork
 
@@ -62,10 +97,28 @@ capture** (champ, valeur observée). Justifiez en 1-2 phrases.
 1. Pourquoi l'**adresse MAC source** observée n'est-elle **pas** celle du
    serveur `internet` mais celle du `nat-router`&nbsp;? Que vous apprend
    cette observation sur la portée de chaque couche&nbsp;?
-2. Lancez `curl -v https://...` vers un site HTTPS public (depuis l'hôte,
+2. Vous capturez sur `eth0` du client (côté LAN). Dans votre trace, l'**IP
+   source** sortante est `172.20.1.50`. Pourtant, `curl /whoami` rapporte
+   que le serveur perçoit `172.20.0.254`. Expliquez cette différence et
+   indiquez **où** il faudrait capturer pour voir l'IP réécrite.
+   *Astuce&nbsp;:* `docker exec lab_nat_router tcpdump -i any -nn -c 10 host 172.20.0.10`.
+3. Lancez `curl -v https://...` vers un site HTTPS public (depuis l'hôte,
    pas le lab). Quelle couche change visiblement par rapport au HTTP du
    lab&nbsp;? Quelles couches **disparaissent** de votre visibilité&nbsp;?
-3. La couche 5 (Session) est très peu visible dans une capture HTTP/1.1.
+4. La couche 5 (Session) est très peu visible dans une capture HTTP/1.1.
    Donnez **deux mécanismes applicatifs** qui jouent le rôle de la
    couche session, et expliquez pourquoi ils sont implémentés
    « plus haut »&nbsp;dans la pile.
+
+## Pièges fréquents
+
+* **Capture vide (`Number of packets: 0`)** — vous avez lancé `curl` *avant*
+  tcpdump, ou tcpdump a été tué avant d'écrire son buffer. Solution : utilisez
+  bien `-U -c 30` (étape 2) et déclenchez le trafic *après* le message
+  `listening on eth0…`.
+* **`tcpdump: /tmp/http.pcap: Permission denied`** — un fichier appartenant à
+  l'utilisateur `tcpdump` (créé par une capture précédente) bloque
+  l'écriture. Solution : `docker exec lab_client rm -f /tmp/http.pcap`.
+* **`tshark … | less` n'affiche rien** — vous êtes dans un environnement
+  sans TTY (script, pipeline). Retirez `| less` ou utilisez
+  `docker exec -it lab_client sh -c "… | less"`.
