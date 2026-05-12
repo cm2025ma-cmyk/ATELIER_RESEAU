@@ -138,7 +138,11 @@ NAT (exercice 3), pointez-le vers le bon conteneur et le bon fichier :
    visibles (utilisez la ligne `Pile présente : …` en en-tête). Expliquez
    en 1 phrase pourquoi la couche 7 est absente sur la trame de contrôle TCP.
 
-## À rendre dans le README de votre fork
+> 💬 **Votre réponse (sorties du script + analyse) :**
+>
+> _Remplacez ce texte par votre réponse._
+
+## À rendre — répondez directement dans ce fichier
 
 Pour **chaque couche OSI**, donnez **un exemple concret extrait de votre
 capture** (champ, valeur observée). Justifiez en 1-2 phrases.
@@ -153,23 +157,43 @@ capture** (champ, valeur observée). Justifiez en 1-2 phrases.
 | 2 — Liaison        | _ex. adresses MAC_              | …              |
 | 1 — Physique       | _non visible — pourquoi&nbsp;?_ | …              |
 
-## Questions de réflexion (à répondre dans le fork)
+## Questions de réflexion
 
-1. Pourquoi l'**adresse MAC source** observée n'est-elle **pas** celle du
-   serveur `internet` mais celle du `nat-router`&nbsp;? Que vous apprend
-   cette observation sur la portée de chaque couche&nbsp;?
-2. Vous capturez sur `eth0` du client (côté LAN). Dans votre trace, l'**IP
-   source** sortante est `172.20.1.50`. Pourtant, `curl /whoami` rapporte
-   que le serveur perçoit `172.20.0.254`. Expliquez cette différence et
-   indiquez **où** il faudrait capturer pour voir l'IP réécrite.
-   *Astuce&nbsp;:* `docker exec lab_nat_router tcpdump -i any -nn -c 10 host 172.20.0.10`.
-3. Lancez `curl -v https://...` vers un site HTTPS public (depuis l'hôte,
-   pas le lab). Quelle couche change visiblement par rapport au HTTP du
-   lab&nbsp;? Quelles couches **disparaissent** de votre visibilité&nbsp;?
-4. La couche 5 (Session) est très peu visible dans une capture HTTP/1.1.
-   Donnez **deux mécanismes applicatifs** qui jouent le rôle de la
-   couche session, et expliquez pourquoi ils sont implémentés
-   « plus haut »&nbsp;dans la pile.
+**Question 1.** Pourquoi l'**adresse MAC source** observée n'est-elle
+**pas** celle du serveur `internet` mais celle du `nat-router`&nbsp;? Que
+vous apprend cette observation sur la portée de chaque couche&nbsp;?
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question 2.** Vous capturez sur `eth0` du client (côté LAN). Dans votre
+trace, l'**IP source** sortante est `172.20.1.50`. Pourtant, `curl /whoami`
+rapporte que le serveur perçoit `172.20.0.254`. Expliquez cette différence
+et indiquez **où** il faudrait capturer pour voir l'IP réécrite.
+*Astuce&nbsp;:* `docker exec lab_nat_router tcpdump -i any -nn -c 10 host 172.20.0.10`.
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question 3.** Lancez `curl -v https://...` vers un site HTTPS public
+(depuis l'hôte, pas le lab). Quelle couche change visiblement par
+rapport au HTTP du lab&nbsp;? Quelles couches **disparaissent** de votre
+visibilité&nbsp;?
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question 4.** La couche 5 (Session) est très peu visible dans une
+capture HTTP/1.1. Donnez **deux mécanismes applicatifs** qui jouent le
+rôle de la couche session, et expliquez pourquoi ils sont implémentés
+« plus haut »&nbsp;dans la pile.
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
 
 ## Pièges fréquents
 

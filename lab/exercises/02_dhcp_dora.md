@@ -31,7 +31,7 @@ Affichez aussi les journaux applicatifs du serveur&nbsp;:
 docker logs --tail 40 lab_dhcp_server
 ```
 
-## À rendre dans le README de votre fork
+## À rendre — répondez directement dans ce fichier
 
 ### 1. Tableau DORA
 
@@ -54,23 +54,56 @@ docker exec lab_client cat /etc/resolv.conf   # peut être vide si non géré pa
 
 Notez **l'IP attribuée, le masque, la passerelle, les DNS, la durée de bail**.
 
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse (IP / masque / GW / DNS / bail)._
+
 ### 3. Questions de réflexion
 
-1. Pourquoi le client utilise-t-il **`0.0.0.0` comme IP source** pour le
-   Discover, alors que c'est une adresse non routable&nbsp;? Que se
-   passerait-il avec n'importe quelle autre adresse&nbsp;?
-2. Pourquoi le **Request** est-il **rediffusé en broadcast** alors que
-   le client connaît déjà l'IP du serveur après l'Offer&nbsp;?
-3. À quoi sert le **transaction ID (xid)** présent dans les 4 paquets&nbsp;?
-   Que se passerait-il s'il était omis dans un réseau avec plusieurs
-   serveurs DHCP&nbsp;?
-4. Que renvoie le serveur si vous demandez explicitement une adresse hors
-   du pool (essayez `dhclient -v -s 172.20.1.99 eth0`)&nbsp;? Justifiez.
-5. La directive `dhcp-authoritative` est active sur notre serveur. Quel
-   est son effet **comportemental** sur les NAK&nbsp;?
+**Question 1.** Pourquoi le client utilise-t-il **`0.0.0.0` comme IP
+source** pour le Discover, alors que c'est une adresse non routable&nbsp;?
+Que se passerait-il avec n'importe quelle autre adresse&nbsp;?
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question 2.** Pourquoi le **Request** est-il **rediffusé en broadcast**
+alors que le client connaît déjà l'IP du serveur après l'Offer&nbsp;?
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question 3.** À quoi sert le **transaction ID (xid)** présent dans les
+4 paquets&nbsp;? Que se passerait-il s'il était omis dans un réseau avec
+plusieurs serveurs DHCP&nbsp;?
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question 4.** Que renvoie le serveur si vous demandez explicitement une
+adresse hors du pool (essayez `dhclient -v -s 172.20.1.99 eth0`)&nbsp;?
+Justifiez.
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question 5.** La directive `dhcp-authoritative` est active sur notre
+serveur. Quel est son effet **comportemental** sur les NAK&nbsp;?
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
 
 ### 4. Renouvellement de bail (T1/T2)
 
 Le bail est de 12&nbsp;h, T1 (renouvellement) à 6&nbsp;h, T2 (rebind) à 10&nbsp;h30.
 En **2-3 phrases**, décrivez la différence entre un renouvellement T1 et
 un rebind T2 (destinataire du paquet, comportement attendu).
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._

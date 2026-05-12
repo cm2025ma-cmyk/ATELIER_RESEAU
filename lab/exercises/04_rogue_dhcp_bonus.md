@@ -60,16 +60,30 @@ for i in 1 2 3 4 5; do
 done
 ```
 
-### À rendre
+### À rendre — répondez directement dans ce fichier
 
-1. Combien d'**Offers** voyez-vous pour chaque Discover&nbsp;? De **quels
-   serveurs** proviennent-elles (IP)&nbsp;?
-2. Quel critère détermine **quelle Offer le client accepte**&nbsp;?
-   (Indice&nbsp;: lisez la RFC 2131 §3.1.3 ou observez empiriquement plusieurs
-   répétitions.)
-3. Lorsque le rogue gagne, quelle est la **passerelle** assignée au
-   client&nbsp;? Quelles conséquences concrètes pour le trafic
-   sortant&nbsp;?
+**Question B.1.** Combien d'**Offers** voyez-vous pour chaque
+Discover&nbsp;? De **quels serveurs** proviennent-elles (IP)&nbsp;?
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question B.2.** Quel critère détermine **quelle Offer le client
+accepte**&nbsp;? (Indice&nbsp;: lisez la RFC 2131 §3.1.3 ou observez
+empiriquement plusieurs répétitions.)
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question B.3.** Lorsque le rogue gagne, quelle est la **passerelle**
+assignée au client&nbsp;? Quelles conséquences concrètes pour le trafic
+sortant&nbsp;?
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
 
 ## Partie C — Outils de défense
 
@@ -86,6 +100,10 @@ qui&nbsp;:
 Livrez le script et **une capture de console** montrant qu'il détecte
 bien le rogue.
 
+> 💬 **Votre réponse (script + sortie de console démontrant la détection) :**
+>
+> _Remplacez ce texte par votre réponse._
+
 ## Partie D — Contre-mesures réseau
 
 En 5-10 phrases, comparez les trois contre-mesures suivantes en termes
@@ -95,10 +113,18 @@ de **niveau OSI, efficacité, déployabilité**&nbsp;:
 2. **802.1X + authentification du serveur**
 3. **Détection passive** (l'approche de votre script en partie C)
 
+> 💬 **Votre comparaison :**
+>
+> _Remplacez ce texte par votre réponse._
+
 Indiquez laquelle vous recommanderiez pour&nbsp;:
 - un campus universitaire avec ~1000 postes,
 - un datacenter cloud privé,
 - un réseau Wi-Fi invité dans un café.
+
+> 💬 **Vos recommandations (un choix justifié par contexte) :**
+>
+> _Remplacez ce texte par votre réponse._
 
 ## Nettoyage
 

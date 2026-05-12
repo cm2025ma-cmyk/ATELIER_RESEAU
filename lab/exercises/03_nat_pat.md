@@ -41,16 +41,30 @@ docker logs --tail 20 lab_internet
 > **symlink vers `/dev/stdout`** — la lecture passe donc par `docker logs`,
 > pas par `tail` sur le fichier.
 
-### À rendre
+### À rendre — répondez directement dans ce fichier
 
-1. Recopiez **deux lignes** de `conntrack -L` représentatives. Annotez
-   chaque champ&nbsp;: `src`, `dst`, `sport`, `dport`, **puis le second
-   tuple** (reply), et expliquez ce que le tuple-reply signifie.
-2. Quelle IP voit le serveur `internet` dans `access.log`&nbsp;? Pourquoi
-   pas `172.20.1.50`&nbsp;?
-3. Combien de **ports sources distincts** apparaissent côté NAT pour les
-   5 requêtes parallèles&nbsp;? Que se passerait-il avec 65 000 connexions
-   simultanées&nbsp;? (donnez une borne théorique).
+**Question A.1.** Recopiez **deux lignes** de `conntrack -L` représentatives.
+Annotez chaque champ&nbsp;: `src`, `dst`, `sport`, `dport`, **puis le
+second tuple** (reply), et expliquez ce que le tuple-reply signifie.
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question A.2.** Quelle IP voit le serveur `internet` dans
+`access.log`&nbsp;? Pourquoi pas `172.20.1.50`&nbsp;?
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question A.3.** Combien de **ports sources distincts** apparaissent
+côté NAT pour les 5 requêtes parallèles&nbsp;? Que se passerait-il avec
+65&nbsp;000 connexions simultanées&nbsp;? (donnez une borne théorique).
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
 
 ## Partie B — Casser le NAT et réparer
 
@@ -70,15 +84,23 @@ Relancez `curl http://172.20.0.10/whoami` depuis le client. Que se
 passe-t-il **côté client** (timeout, refus, autre)&nbsp;? **Côté serveur**
 (log nginx)&nbsp;?
 
+> 💬 **Votre réponse (observation client + serveur) :**
+>
+> _Remplacez ce texte par votre réponse._
+
 Vérifiez avec un tcpdump sur le routeur, côté WAN&nbsp;:
 
 ```bash
 docker exec lab_nat_router tcpdump -i eth0 -nn host 172.20.0.10
 ```
 
-> Quelle IP source apparaît dans les paquets sortants&nbsp;? Pourquoi
-> l'absence de MASQUERADE cause un problème pour la **réponse** plutôt
-> que pour l'**aller**&nbsp;?
+**Question B.** Quelle IP source apparaît dans les paquets sortants&nbsp;?
+Pourquoi l'absence de MASQUERADE cause un problème pour la **réponse**
+plutôt que pour l'**aller**&nbsp;?
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
 
 Remettez la règle&nbsp;:
 
@@ -103,23 +125,51 @@ Testez&nbsp;:
 docker exec lab_client curl -s http://172.20.1.254:8080/whoami
 ```
 
-### À rendre
+### À rendre — répondez directement dans ce fichier
 
-1. Quelle IP voit nginx maintenant dans `access.log`&nbsp;? Comparez avec
-   l'IP vue en partie A et expliquez la différence.
-2. Modifiez la règle pour que nginx voie l'**IP réelle** du client. Indice&nbsp;:
-   il manque encore une règle de SNAT pour le retour, OU activez la
-   fonction « hairpin » avec une règle dans `POSTROUTING`.
-3. Donnez **un cas d'usage réel** (datacenter ou domestique) pour ce
-   couple DNAT + SNAT.
+**Question C.1.** Quelle IP voit nginx maintenant dans `access.log`&nbsp;?
+Comparez avec l'IP vue en partie A et expliquez la différence.
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question C.2.** Modifiez la règle pour que nginx voie l'**IP réelle**
+du client. Indice&nbsp;: il manque encore une règle de SNAT pour le retour,
+OU activez la fonction « hairpin » avec une règle dans `POSTROUTING`.
+
+> 💬 **Votre réponse (règle iptables + observation nginx) :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question C.3.** Donnez **un cas d'usage réel** (datacenter ou
+domestique) pour ce couple DNAT + SNAT.
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
 
 ## Questions de synthèse
 
-1. **NAT vs PAT** — donnez la différence en une phrase, et indiquez
-   lequel des deux est implémenté par notre `MASQUERADE`. Justifiez.
-2. **NAT et sécurité** — vrai ou faux : « le NAT protège un réseau
-   interne ». Argumentez en 3-4 phrases (pensez aux connexions
-   **sortantes**).
-3. **IPv6** — IPv6 a globalement supprimé le besoin de NAT. Citez **deux
-   raisons** pour lesquelles le NAT reste néanmoins utilisé en IPv6 dans
-   certains contextes.
+**Question S.1 — NAT vs PAT.** Donnez la différence en une phrase, et
+indiquez lequel des deux est implémenté par notre `MASQUERADE`. Justifiez.
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question S.2 — NAT et sécurité.** Vrai ou faux : « le NAT protège un
+réseau interne ». Argumentez en 3-4 phrases (pensez aux connexions
+**sortantes**).
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
+
+**Question S.3 — IPv6.** IPv6 a globalement supprimé le besoin de NAT.
+Citez **deux raisons** pour lesquelles le NAT reste néanmoins utilisé
+en IPv6 dans certains contextes.
+
+> 💬 **Votre réponse :**
+>
+> _Remplacez ce texte par votre réponse._
