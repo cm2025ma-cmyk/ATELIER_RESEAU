@@ -56,7 +56,7 @@ Difficulté : Moyenne (~1 h)
 
 **Côté théorie** — consultez la fiche structurée sur **`{site}.pythonanywhere.com/osi`**.
 
-**Côté pratique** — réalisez l'**[exercice 1](lab/exercises/01_osi_capture.md)** dans le lab Docker&nbsp;: capture HTTP au tcpdump, décodage couche par couche au `tshark`, et identification d'un champ concret pour chaque couche OSI.
+**Côté pratique** — réalisez l'**[exercice 1](lab/exercises/01_osi_capture.md)** dans le lab Docker&nbsp;: capture HTTP au tcpdump, décodage couche par couche au `tshark`, et identification d'un champ concret pour chaque couche OSI. **Vos réponses se complètent directement dans le fichier de l'exercice** (zones « Votre réponse » fournies).
 
 **Exercice 1.1 — Définitions (réponse directement dans ce README)**
 
@@ -67,10 +67,6 @@ Difficulté : Moyenne (~1 h)
 * Une **Service Data Unit (SDU)** par rapport à une PDU :
 * Un **point d'accès à un service (SAP)** :
 
-**Exercice 1.2 — Capture OSI (sortie du lab Docker)**
-
-Collez votre tableau « Couche / élément observé / valeur exemple » issu de [`lab/exercises/01_osi_capture.md`](lab/exercises/01_osi_capture.md).
-
 ---------------------------------------------------
 🗺️ Séquence 5 : Retour sur le protocole DHCP
 ---------------------------------------------------
@@ -79,13 +75,7 @@ Difficulté : Moyenne (~1 h)
 
 **Côté théorie** — fiche sur **`{site}.pythonanywhere.com/dhcp`**.
 
-**Côté pratique** — réalisez l'**[exercice 2](lab/exercises/02_dhcp_dora.md)**&nbsp;: capturez un DORA complet sur le lab, identifiez les options DHCP des 4 paquets, répondez aux questions sur le broadcast, le `xid`, et le renouvellement T1/T2.
-
-**Exercice 2 — Capture DHCP (sortie du lab Docker)**
-
-* Collez votre **tableau DORA** (4 lignes).
-* Collez votre **configuration finale du client** (IP, masque, GW, DNS, bail).
-* Collez votre **schéma d'encapsulation** (Ethernet → IP → UDP → BOOTP/DHCP).
+**Côté pratique** — réalisez l'**[exercice 2](lab/exercises/02_dhcp_dora.md)**&nbsp;: capturez un DORA complet sur le lab, identifiez les options DHCP des 4 paquets, répondez aux questions sur le broadcast, le `xid`, et le renouvellement T1/T2. **Réponses à compléter directement dans le fichier de l'exercice.**
 
 ---------------------------------------------------
 🗺️ Séquence 6 : NAT / PAT
@@ -95,12 +85,7 @@ Difficulté : Élevée (~1 h)
 
 **Côté théorie** — fiche sur **`{site}.pythonanywhere.com/nat`**.
 
-**Côté pratique** — réalisez l'**[exercice 3](lab/exercises/03_nat_pat.md)**&nbsp;: observation de la table `conntrack`, suppression / restauration de la règle MASQUERADE, mise en place d'un DNAT entrant.
-
-**Exercice 3 — Sortie du lab Docker**
-
-* Collez **deux lignes de `conntrack -L`** annotées.
-* Répondez aux questions de synthèse (NAT vs PAT, NAT et sécurité, NAT en IPv6).
+**Côté pratique** — réalisez l'**[exercice 3](lab/exercises/03_nat_pat.md)**&nbsp;: observation de la table `conntrack`, suppression / restauration de la règle MASQUERADE, mise en place d'un DNAT entrant. **Réponses à compléter directement dans le fichier de l'exercice.**
 
 ---------------------------------------------------
 🗺️ Séquence 7 (Bonus) : Détection d'un rogue DHCP
@@ -108,7 +93,7 @@ Difficulté : Élevée (~1 h)
 Difficulté : Élevée (~1 h 30)
 ---------------------------------------------------
 
-**Optionnel mais recommandé pour le M2** — réalisez l'**[exercice 4 (bonus)](lab/exercises/04_rogue_dhcp_bonus.md)**&nbsp;: ajoutez un faux serveur DHCP dans le lab, observez la course aux Offers, écrivez un script de détection passive, et comparez 3 contre-mesures (DHCP Snooping, 802.1X, détection passive).
+**Optionnel mais recommandé pour le M2** — réalisez l'**[exercice 4 (bonus)](lab/exercises/04_rogue_dhcp_bonus.md)**&nbsp;: ajoutez un faux serveur DHCP dans le lab, observez la course aux Offers, écrivez un script de détection passive, et comparez 3 contre-mesures (DHCP Snooping, 802.1X, détection passive). **Réponses à compléter directement dans le fichier de l'exercice.**
 
 ---------------------------------------------------
 🗺️ Séquence 8 : Métriques de QoS observées
