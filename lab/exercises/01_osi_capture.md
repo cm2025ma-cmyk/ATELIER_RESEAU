@@ -174,11 +174,50 @@ NAT (exercice 3), pointez-le vers le bon conteneur et le bon fichier :
 1. Lancez `./lab/exercises/osi_inspect.py` pour obtenir la liste des trames.
 2. Identifiez **une trame contenant du HTTP** (typiquement la requête `GET /`)
    et **une trame de contrôle TCP** (SYN, ACK seul, ou FIN).
-3. Lancez le script avec le n° de chaque trame et **copiez la sortie**
+
+   HTTP GET
+
+   <img width="1200" height="493" alt="image" src="https://github.com/user-attachments/assets/4a3e2b84-b64b-477c-b58c-cbc0124dacce" />
+
+
+   <img width="1200" height="493" alt="image" src="https://github.com/user-attachments/assets/fe9def6a-0598-42a7-81d2-99a524c7c585" />
+
+
+4. Lancez le script avec le n° de chaque trame et **copiez la sortie**
    dans le README de votre fork (bloc de code).
-4. Pour chacune des deux trames, **comptez et nommez** les couches OSI
+   
+Trame TCP Initialisation
+
+
+   <img width="1210" height="479" alt="image" src="https://github.com/user-attachments/assets/594ce720-1468-4ff0-9d88-5e1341b980b1" />
+
+Ici initialisation de la connection avec le premier SYN, on le remarque via le flags S. 
+
+Trame HTTP GET
+
+   <img width="1236" height="598" alt="image" src="https://github.com/user-attachments/assets/5104dce8-7f54-444f-89dc-69bb8c85a0bb" />
+
+On voit tout en bas methode GET pour demander la page web la version utilisé HTTP 1.1 sur l'host 172.20.0.10. Le navigateur web utilisé est CURL
+
+6. Pour chacune des deux trames, **comptez et nommez** les couches OSI
    visibles (utilisez la ligne `Pile présente : …` en en-tête). Expliquez
    en 1 phrase pourquoi la couche 7 est absente sur la trame de contrôle TCP.
+   
+ Trame 1  |  74 octets  |  May 13, 2026 07:50:50.904601000 UTC
+  Pile présente : eth > ip > tcp
+
+  Couche Eth niveau 2 Laison physique
+  Couche ip niveau 3 Ethernet
+  Couche tcp niveau 4 Transport
+
+
+  Trame 4  |  141 octets  |  May 13, 2026 07:50:50.905099000 UTC
+  Pile présente : eth > ip > tcp > http
+
+  Couche Eth niveau 2 Laison physique
+  Couche ip niveau 3 Ethernet
+  Couche tcp niveau 4 Transport
+  Couche http niveau 7 Application
 
 > 💬 **Votre réponse (sorties du script + analyse) :**
 >
