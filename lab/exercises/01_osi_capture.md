@@ -203,25 +203,24 @@ On voit tout en bas methode GET pour demander la page web la version utilisé HT
    visibles (utilisez la ligne `Pile présente : …` en en-tête). Expliquez
    en 1 phrase pourquoi la couche 7 est absente sur la trame de contrôle TCP.
    
+```bash
  Trame 1  |  74 octets  |  May 13, 2026 07:50:50.904601000 UTC
   Pile présente : eth > ip > tcp
 
   Couche Eth niveau 2 Laison physique
   Couche ip niveau 3 Ethernet
   Couche tcp niveau 4 Transport
+```
 
-
+```bash
   Trame 4  |  141 octets  |  May 13, 2026 07:50:50.905099000 UTC
   Pile présente : eth > ip > tcp > http
-
+  
   Couche Eth niveau 2 Laison physique
   Couche ip niveau 3 Ethernet
   Couche tcp niveau 4 Transport
   Couche http niveau 7 Application
-
-> 💬 **Votre réponse (sorties du script + analyse) :**
->
-> _Remplacez ce texte par votre réponse._
+```
 
 ## À rendre — répondez directement dans ce fichier
 
@@ -230,7 +229,7 @@ capture** (champ, valeur observée). Justifiez en 1-2 phrases.
 
 | Couche OSI         | Élément observé dans la capture | Valeur exemple |
 | ------------------ | ------------------------------- | -------------- |
-| 7 — Application    | _ex. méthode HTTP_              | `GET /whoami HTTP/1.1` |
+| 7 — Application    | _ex. méthode HTTP_              | `GET  URI= /  Version= HTTP/1.1 Host               = 172.20.0.10  User-Agent         = curl/7.88.1` | 
 | 6 — Présentation   | _ex. encodage / Content-Type_   | …              |
 | 5 — Session        | _ex. Keep-Alive, cookies_       | …              |
 | 4 — Transport      | _ex. port TCP, flags_           | …              |
@@ -246,7 +245,7 @@ vous apprend cette observation sur la portée de chaque couche&nbsp;?
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> _Le routeur effectue un NAT Network Adresse Translation change l'adresse MAC du destinataire à chaque fois, l'adresse MAC est necessaire pour la communication dans un réseau de niveau 2 car il permet de lié un individu à une adresse IP logique niveau 3._
 
 **Question 2.** Vous capturez sur `eth0` du client (côté LAN). Dans votre
 trace, l'**IP source** sortante est `172.20.1.50`. Pourtant, `curl /whoami`
@@ -256,7 +255,7 @@ et indiquez **où** il faudrait capturer pour voir l'IP réécrite.
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> _Il faudrait capturer au niveau du routeur via l'outil Netfilter situé dans son noyau._
 
 **Question 3.** Lancez `curl -v https://...` vers un site HTTPS public
 (depuis l'hôte, pas le lab). Quelle couche change visiblement par
@@ -265,7 +264,7 @@ visibilité&nbsp;?
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> _La couche ._
 
 **Question 4.** La couche 5 (Session) est très peu visible dans une
 capture HTTP/1.1. Donnez **deux mécanismes applicatifs** qui jouent le
