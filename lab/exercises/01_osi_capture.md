@@ -78,6 +78,16 @@ docker exec lab_client tshark -r /tmp/http.pcap -V -Y 'frame.number == 4'
 docker exec -it lab_client sh -c "tshark -r /tmp/http.pcap -V | less"
 ```
 
+Vue capture http.pcap
+
+<img width="1159" height="260" alt="image" src="https://github.com/user-attachments/assets/c36d099a-c2a3-4e63-b543-6842ae88bf12" />
+
+Vue détaillée
+
+<img width="927" height="632" alt="image" src="https://github.com/user-attachments/assets/1f841900-8f8a-40ef-af1f-2a627d7c0178" />
+
+
+
 > `-V` produit la décomposition complète couche par couche
 > (Frame → Ethernet → IP → TCP → HTTP). Le filtre `-Y` cible un paquet
 > par son numéro pour éviter d'avoir à scroller dans toute la trace.
