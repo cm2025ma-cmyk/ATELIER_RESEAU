@@ -99,6 +99,9 @@ paquet). Un script Python est fourni dans ce dossier pour vous présenter,
 pour chaque trame, un **tableau structuré par couche OSI** avec en plus
 une **colonne d'explication pédagogique** pour chaque champ.
 
+<img width="1188" height="287" alt="image" src="https://github.com/user-attachments/assets/f71a6f75-8649-4846-864e-0f617d2cf253" />
+
+
 ### Lister les trames
 
 Depuis la racine du dépôt (l'hôte, pas l'intérieur du conteneur) :
@@ -118,6 +121,30 @@ trame portant `GET /` (ligne marquée `HTTP 141 GET / HTTP/1.1`).
 ./lab/exercises/osi_inspect.py 1         # trame n°1 — le SYN du handshake
 ./lab/exercises/osi_inspect.py 8         # trame n°8 — la réponse 200 OK
 ```
+Trame n°4 
+
+
+
+<img width="1197" height="599" alt="image" src="https://github.com/user-attachments/assets/8af81bb3-0381-4d46-90ac-cf124187b726" />
+
+
+
+Trame n°1
+
+
+
+<img width="1194" height="487" alt="image" src="https://github.com/user-attachments/assets/2cf7da9c-0059-497d-94f6-d9f66dc045f6" />
+
+
+
+Trame n°8
+
+
+
+<img width="1176" height="655" alt="image" src="https://github.com/user-attachments/assets/702032a4-ab73-4c14-8074-ea22d2b5a1a2" />
+
+
+
 
 Le script affiche, pour chaque couche OSI **présente** dans la trame, les
 champs clés avec **3 informations** :
