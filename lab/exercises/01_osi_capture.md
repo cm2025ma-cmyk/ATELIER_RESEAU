@@ -51,7 +51,12 @@ docker exec lab_client curl -s http://172.20.0.10/        # complément pour att
 tcpdump s'arrête seul dès le 30e paquet et affiche un résumé du type
 `30 packets captured / 0 packets dropped by kernel`.
 
+<img width="534" height="121" alt="image" src="https://github.com/user-attachments/assets/70d054ba-93f7-4a1b-b4fc-df3b5d0a6b76" />
+
 **Étape 4 — vérifiez que la capture est exploitable** :
+
+<img width="518" height="243" alt="image" src="https://github.com/user-attachments/assets/48598b0e-cfdf-4265-8c8c-fc5395464265" />
+
 
 ```bash
 docker exec lab_client capinfos /tmp/http.pcap
